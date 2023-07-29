@@ -1,0 +1,26 @@
+{% extends "quiz_app/main.html" %}
+{% block link %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+{% endblock link %}
+{% block body %}
+<h2 class="text-center" style="font-size: 40px;">{{request.user| title}}</h2>
+<div class="container">
+  <div class="row">
+    {% for response in responses %}
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h4>Q {{response.question.id}}</h4>
+            <h5 class="card-title">{{ response.question.question }}</h5>
+            <p class="card-text">{{ response.user_response }}</p>
+            <p class="card-text" style="color: green;"> {{ response.status }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock body %}
+{% block script %}
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+{% endblock script %}

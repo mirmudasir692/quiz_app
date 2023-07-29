@@ -1,0 +1,76 @@
+{% extends "quiz_app/main.html" %}
+{% block link %}
+
+
+{% endblock link %}
+{% block body %}
+<form action="user_response" method="post" class="form-submit">
+  {% csrf_token %}
+  {% for question in questions %}
+    <div>
+  <div class="container">
+    <h5 class="question-number">Q {{questions.number}}</h5>
+    <p class="questions" data-value="{{question.id}}">{{question.question}}</p>
+<div class="btn-group">
+{% for answer in question.answers.all %}
+  <button type="button" class="answer-btn" name="user_answer" value="{{ answer.id }}">{{ answer.option1 }}</button>
+  <button type="button" class="answer-btn" name="user_answer" value="{{ answer.id }}">{{ answer.option2 }}</button>
+  <button type="button" class="answer-btn" name="user_answer" value="{{ answer.id }}">{{ answer.option3 }}</button>
+  <button type="button" class="answer-btn" name="user_answer" value="{{ answer.id }}">{{ answer.option4 }}</button>
+{% endfor %}
+<p class="answer_status"></p>
+</div>  
+</div>
+<nav>
+  <ul class="pagination" style="position:relative;left: 40%;bottom:20px">
+    {% if questions.has_next %}
+          <li class="page-item">
+                    <a class="page-link next" href="?page={{ questions.next_page_number }}">Next
+                    </a>
+    </li>
+    {% else %}
+    <a href="{% url 'exit_game' %}" class="next">Done</a>
+    {% endif %}
+  </ul>
+</nav>
+</div>
+</form>
+{% endfor %}
+{% endblock body %}
+{% block script %}
+<script>
+  const csrfToken = getCookie('csrftoken');
+    let btns=document.querySelectorAll('.answer-btn')
+    let nextbtn=document.querySelector('.next')
+    let question=document.querySelector('.questions')
+    let answer_status=document.querySelector('.answer_status')
+    btns.forEach((btn)=>{
+        btn.addEventListener('click',()=>{
+            btn.style.backgroundColor="green"
+            btn.style.color="white"
+              console.log(btn.innerHTML) //this is for debugging
+                btn.style.pointerEvents='none'
+                nextbtn.style.pointerEvents='auto'
+                console.log(btn.getAttribute('value'))
+                fetch('user_response',{
+                  method:'POST',
+                  headers:{
+                    'content-type':'application/json',
+                    'X-CSRFToken': csrfToken,
+                  },
+                  body:JSON.stringify({'answer':btn.innerHTML,'question_id':question.dataset.value})
+                })
+                .then((response)=>response.json())
+                .then((data)=>{
+                  answer_status.innerHTML=data
+                  answer_status.style.display='block'
+                })
+        })
+    })
+    nextbtn.style.pointerEvents='none'
+    function getCookie(name) {
+        const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+        return cookieValue ? cookieValue.pop() : '';
+    }
+</script>
+{% endblock script %}

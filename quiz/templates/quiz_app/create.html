@@ -1,0 +1,31 @@
+{% extends "quiz_app/main.html" %}
+{% block body %}
+  <div class="container">
+     {% for message in messages %}
+              <p style="color:red;font-weight:700;margin-left:20%;margin-top:-5%">{{message}}</p>
+            {% endfor %}
+          <div id="buttons">
+            <div class="login">
+                <form action="" method="post">
+                    {% csrf_token %}
+                <table class="create-table">
+                    <tr class="input" style="margin-top: 10px;">
+                        <td class="target"><input type="text" id="username" placeholder="username" name="username" required></td>
+                    </tr>
+                    <tr class="input" style="margin-top: 20px;">
+                        <td class="target"><input type="email" placeholder="Email" name="email" required></td>
+                    </tr>
+                    <tr class="input" style="margin-top: 20px;">
+                        <td class="target"><input type="password" placeholder="password (min-8)" name="password1" required minlength="8"></td>
+                    </tr>
+                    <tr class="input" style="margin-top: 20px;">
+                        <td class="target"><input type="password" placeholder="Confirm password" name="password2" required></td>
+                    </tr>
+                </table>
+                <input type="submit" value="Create" class="btn" style="border: none;padding:5px 30px;margin-left:165px">
+                </form>
+                <p style="color: grey;margin-left:auto;margin-right:auto">Already have an account <a style="color: black;font-size:18px" class="create" href="{% url 'home' %}">login</a></p>
+            </div>
+        </div>
+  </div>
+{% endblock body %}

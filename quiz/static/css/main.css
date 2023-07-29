@@ -1,0 +1,191 @@
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color:navy;
+            margin: 0%;
+            padding: 0%;
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+        nav{
+}
+.navbar{
+    max-width: 100%;
+    margin-top: 0;
+}
+.navbar ul{
+    background:linear-gradient(rgba(225, 222, 218, 0.6),rgba(216, 153, 71,0.6));
+    width: 100%;
+    padding: 10px 0;
+
+}
+.navbar ul li{
+    display: inline;
+    padding: 5px 15px ;
+}
+.navbar ul li a{
+    text-decoration: none;
+    color: black;
+    font-family: sans-serif;
+    font-weight: 400;
+    outline: none;
+    padding: 10px 10px;
+}
+.navbar ul li a:hover{
+    background-color: white;
+}
+        .container {
+            background-color: white;
+            background-size:cover ;
+            width: 300px;
+            height: 400px;
+            margin: 100px auto 0;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        .input {
+            padding: 10px 1px 0;
+            padding: 10px 2px 0;
+            display: flex;
+
+        }
+        .target{
+            margin-left: 60px;
+        }
+        .name {
+            margin-right: 5px;
+        }
+
+        .btn,
+        .ok {
+            margin-top: 40%;
+            margin-left: 35%;
+            padding: 1% 2%;
+            border-radius: 4px;
+            position: relative;
+            left: -50px;
+            top: -60px;
+            background-color:rgba(39, 39, 153,0.5);
+        }
+
+        .btn:hover {
+            background-color: rgba(35, 35, 164,0.9);
+            color: white;
+        }
+
+        input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid black;
+            line-height: 20px;
+            font-size: 15px;
+            outline: none;
+        }
+        .target {
+            position: relative;
+            top: -8px;
+            line-height: 30px;
+        }
+        .create{
+            
+        }
+        .create-table{
+            background-color: white;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 300px;
+        }
+        input[type="email"],input[type="password"],input[type="text"]{
+            margin-left: -30px;
+        }
+        .answer_btn{
+            background-color: aqua;
+        }
+        .btn-group{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .answer-btn{
+            margin-bottom: 5px;
+            width: 100%;
+            padding: 5px 15px;
+            color: navy;
+            font-size: 15px;
+            border: 2px solid navy;
+            border-radius: 4px;
+        }
+        .answer-btn:hover{
+            background-color: green;
+            color: white;
+        }
+        .question-number{
+            font-size: 20px;
+            color: grey;
+        }
+        .questions{
+            padding: 5px 5px;
+            font-size: 20px;
+            font-weight: 600;
+            padding-bottom: 30px;
+            line-height: 30px;
+            color:rgb(12, 12, 31);
+            font-family:'Times New Roman', Times, serif;
+        }
+        .pagination{
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: 7%;
+            max-width: 80px;
+        }
+        .pagination li{
+            list-style: none;
+        }
+        .pagination li a{
+            text-decoration: none;
+        }
+        .next{
+            background-color: rgba(13, 13, 103,0.4);
+            position: fixed;
+            padding: 8px 15px;
+            border-radius: 4px;
+            margin-left: 6px;
+        }
+        .answer_status{
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            font-weight: 900;
+            padding-top: 40px;
+            color: green;
+            display: none;
+        }
+        .next:hover{
+            text-decoration: underline;
+        }
+        @media screen and (max-width:500px) {
+            .container {
+                width: 250px;
+            }
+            .name{
+                width: 90px;
+                
+            }
+            #username,#password{
+                width: 150px;
+            }
+            .question{
+                font-size: 10px;
+            }
+            .pagination{
+                margin-left: -6px;
+            }
+            .questions{
+                font-size: 10px;
+                line-height: 25px;
+            }
+        }
